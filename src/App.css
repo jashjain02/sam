@@ -1,0 +1,589 @@
+/* ========================================
+   APP — Main Layout
+   ======================================== */
+
+.app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Cursor sparkle canvas */
+.sparkle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Music toggle */
+.music-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--rose-300);
+  background: rgba(45, 27, 48, 0.8);
+  backdrop-filter: blur(10px);
+  color: var(--rose-300);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-romantic);
+}
+
+.music-toggle:hover {
+  background: rgba(244, 63, 94, 0.2);
+  border-color: var(--rose-400);
+  transform: scale(1.1);
+}
+
+.music-toggle.playing {
+  animation: pulse-glow 2s infinite;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 50%, #2d1b30 0%, #1a0a1e 70%);
+}
+
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 800px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-script);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--gold-400);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--rose-200), var(--rose-300), var(--gold-300), var(--rose-200));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 6s ease infinite;
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--rose-200);
+  opacity: 0.8;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.scroll-text {
+  font-family: var(--font-script);
+  font-size: 0.9rem;
+  color: var(--rose-300);
+  opacity: 0.7;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 38px;
+  border: 2px solid var(--rose-300);
+  border-radius: 12px;
+  position: relative;
+  opacity: 0.6;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  background: var(--rose-300);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: scroll-bounce 2s infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { top: 6px; opacity: 1; }
+  50% { top: 18px; opacity: 0.3; }
+}
+
+/* ========================================
+   STORY SECTION
+   ======================================== */
+
+.story {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--deep-romance) 0%, var(--soft-purple) 50%, var(--deep-romance) 100%);
+}
+
+.story-container {
+  max-width: 700px;
+  text-align: center;
+}
+
+.story-ornament {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  opacity: 0.6;
+  color: var(--gold-400);
+}
+
+.story-heading {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: var(--gold-300);
+  margin-bottom: 40px;
+}
+
+.story-text {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 2;
+  color: var(--rose-100);
+  font-weight: 300;
+}
+
+.story-text .highlight {
+  color: var(--rose-400);
+  font-weight: 600;
+  font-style: italic;
+}
+
+.story-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  margin: 40px auto;
+}
+
+.story-closing {
+  font-family: var(--font-script);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--rose-300);
+  font-style: italic;
+}
+
+/* ========================================
+   PHOTO SECTION
+   ======================================== */
+
+.photo-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: linear-gradient(180deg, var(--deep-romance) 0%, #1e0f22 50%, var(--deep-romance) 100%);
+  overflow: hidden;
+}
+
+.photo-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.photo-heading {
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--gold-300);
+  margin-bottom: 48px;
+}
+
+.polaroid {
+  position: relative;
+  display: inline-block;
+  background: var(--warm-cream);
+  padding: 16px 16px 60px 16px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(244, 63, 94, 0.1);
+  transform: rotate(-2deg);
+  transition: transform 0.6s var(--ease-romantic);
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid-image {
+  width: clamp(260px, 50vw, 400px);
+  height: clamp(260px, 50vw, 400px);
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, var(--rose-100), var(--champagne));
+}
+
+/* Placeholder when no image */
+.polaroid-placeholder {
+  width: clamp(260px, 50vw, 400px);
+  height: clamp(260px, 50vw, 400px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--rose-100), var(--champagne));
+  color: var(--rose-400);
+  gap: 12px;
+}
+
+.polaroid-placeholder-icon {
+  font-size: 3rem;
+}
+
+.polaroid-placeholder-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--rose-500);
+  font-style: italic;
+}
+
+.polaroid-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  color: var(--soft-purple);
+}
+
+.photo-date {
+  margin-top: 32px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--rose-300);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Floating hearts around photo */
+.floating-heart {
+  position: absolute;
+  color: var(--rose-400);
+  opacity: 0.15;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ========================================
+   PROPOSAL SECTION
+   ======================================== */
+
+.proposal {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: radial-gradient(ellipse at 50% 50%, #2d1b30 0%, var(--deep-romance) 70%);
+  overflow: hidden;
+}
+
+.proposal-ring {
+  font-size: clamp(3rem, 8vw, 5rem);
+  margin-bottom: 32px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.proposal-question {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--rose-200), var(--gold-300), var(--rose-300));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+}
+
+.proposal-sub {
+  font-family: var(--font-script);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--rose-300);
+  margin-bottom: 48px;
+  opacity: 0.8;
+}
+
+.proposal-buttons {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-yes {
+  padding: 18px 48px;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--rose-500), var(--rose-600));
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-romantic);
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
+  animation: pulse-glow 3s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-yes::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--rose-400), var(--gold-300), var(--rose-400));
+  border-radius: 52px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.btn-yes:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(244, 63, 94, 0.6);
+}
+
+.btn-yes:hover::before {
+  opacity: 1;
+}
+
+.btn-no {
+  padding: 14px 36px;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--rose-300);
+  background: transparent;
+  border: 1px solid rgba(253, 164, 175, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-romantic);
+  user-select: none;
+}
+
+.btn-no:hover {
+  border-color: var(--rose-400);
+}
+
+/* ========================================
+   CELEBRATION OVERLAY
+   ======================================== */
+
+.celebration-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 50%, rgba(45, 27, 48, 0.97) 0%, rgba(26, 10, 30, 0.99) 70%);
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.celebration-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.celebration-hearts {
+  font-size: clamp(3rem, 8vw, 5rem);
+  margin-bottom: 24px;
+}
+
+.celebration-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--rose-200), var(--gold-300), var(--rose-300));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+}
+
+.celebration-message {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--rose-200);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.celebration-photo {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.celebration-photo img {
+  width: clamp(250px, 60vw, 420px);
+  height: clamp(250px, 60vw, 420px);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow:
+    0 8px 40px rgba(244, 63, 94, 0.3),
+    0 0 100px rgba(244, 63, 94, 0.1);
+}
+
+.celebration-photo-placeholder {
+  width: clamp(250px, 60vw, 420px);
+  height: clamp(250px, 60vw, 420px);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--rose-100), var(--champagne));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose-400);
+  gap: 12px;
+  box-shadow:
+    0 8px 40px rgba(244, 63, 94, 0.3),
+    0 0 100px rgba(244, 63, 94, 0.1);
+}
+
+.celebration-photo-placeholder-icon {
+  font-size: 4rem;
+}
+
+.celebration-footer {
+  font-family: var(--font-script);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--gold-300);
+  margin-top: 16px;
+}
+
+/* Celebration canvas for confetti/hearts */
+.celebration-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5001;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .proposal-buttons {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .btn-yes {
+    padding: 16px 40px;
+  }
+
+  .btn-no {
+    padding: 12px 28px;
+  }
+
+  .polaroid {
+    padding: 10px 10px 48px 10px;
+  }
+
+  .scroll-indicator {
+    bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 16px;
+  }
+
+  .story {
+    padding: 60px 16px;
+  }
+
+  .photo-section {
+    padding: 60px 16px;
+  }
+
+  .proposal {
+    padding: 60px 16px;
+  }
+}
